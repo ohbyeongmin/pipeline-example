@@ -8,13 +8,16 @@ pipeline {
         }
         stage("terraform init") {
             steps{
-                sh ('terraform/terraform init')
+                dir('terraform'){
+                    sh 'pwd'
+                }
+                sh ('terraform init')
             }
         }
         stage("terraform plan"){
             steps{
                 echo "Terraform plan start"
-                sh ('terraform/terraform plan --auto-approve')
+                sh ('terraform plan --auto-approve')
             }
         }
     }
