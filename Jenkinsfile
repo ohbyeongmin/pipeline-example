@@ -1,9 +1,6 @@
 pipeline {
    agent any
 
-   stage('Clone') {
-       checkout scm
-   }
    stage("terraform init") {
        steps{
            sh ('terraform init')
