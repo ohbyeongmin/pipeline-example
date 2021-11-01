@@ -1,4 +1,6 @@
 pipeline {
+   agent any
+
    stage('Clone') {
        checkout scm
    }
