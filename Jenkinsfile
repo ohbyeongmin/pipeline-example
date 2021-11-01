@@ -10,8 +10,8 @@ pipeline {
             steps{
                 dir('terraform'){
                     sh 'pwd'
+                    sh ('terraform init')
                 }
-                sh ('terraform init')
             }
         }
         stage("terraform plan"){
