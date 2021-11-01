@@ -8,13 +8,13 @@ pipeline {
         }
         stage("terraform init") {
             steps{
-                sh ('terraform init')
+                sh ('terraform/terraform init')
             }
         }
         stage("terraform plan"){
             steps{
                 echo "Terraform plan start"
-                sh ('terraform plan --auto-approve')
+                sh ('terraform/terraform plan --auto-approve')
             }
         }
     }
