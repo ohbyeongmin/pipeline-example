@@ -35,4 +35,4 @@ terraform.rc
 *.zip
 response.json
 
-bin/*
+*bin/*
