@@ -16,8 +16,8 @@ pipeline {
         stage("terraform plan"){
             steps{
                 dir('terraform'){
-                    echo "Terraform plan start"
-                    sh ('terraform plan --auto-approve')
+                    echo "terraform plan start"
+                    sh ('terraform plan')
                 }
             }
         }
