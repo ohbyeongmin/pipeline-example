@@ -10,7 +10,7 @@ import (
 func AddNum(a, b int) int {
 	fmt.Println("feature")
 	fmt.Println("feature2")
-	fmt.Println("1")
+	fmt.Println("1 2")
 	return a + b
 }
 
