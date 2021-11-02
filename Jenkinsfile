@@ -9,7 +9,6 @@ pipeline {
         stage("Test") {
             steps{
                 dir('src'){
-                    echo "${BRANCH_NAME}"
                     sh ('/usr/bin/go test ./... -cover')
                 }
             }
@@ -34,15 +33,9 @@ pipeline {
                 }
             }
         }
-        stage("main"){
-            when{
-                expression{
-                    GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-                    return (GIT_BRANCH == 'main')
-                }
-            }
+        stage("test"){
             steps{
-                dir('terraform'){
+                dir('terraform/${BRANCH_NAME}'){
                     sh ('pwd')
                 }
             }
