@@ -6,6 +6,20 @@ pipeline {
                 checkout scm
             }
         }
+        stage("Test") {
+            steps{
+                dir('src'){
+                    sh ('go test ./... -cover')
+                }
+            }
+        }
+        stage("Build"){
+            steps{
+                dir('src'){
+                    sh ('GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o bin/main main.go')
+                }
+            }
+        }
         stage("terraform init") {
             steps{
                 dir('terraform'){
