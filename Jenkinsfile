@@ -20,20 +20,46 @@ pipeline {
                 }
             }
         }
-        stage("terraform init") {
+        stage("staging"){
+            when{
+                expression{
+                    GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                    return (GIT_BRANCH == 'staging')
+                }
+            }
             steps{
-                dir('terraform'){
-                    sh ('/usr/local/bin/terraform init')
+                dir('src'){
+                    sh ('pwd')
                 }
             }
         }
-        stage("terraform plan"){
+        stage("main"){
+            when{
+                expression{
+                    GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                    return (GIT_BRANCH == 'main')
+                }
+            }
             steps{
                 dir('terraform'){
-                    echo "terraform plan start"
-                    sh ('/usr/local/bin/terraform plan')
+                    sh ('pwd')
                 }
             }
         }
+        // stage("terraform init") {
+        //     steps{
+        //         dir('terraform'){
+        //             sh ('/usr/local/bin/terraform init')
+        //         }
+        //     }
+        // }
+        // stage("terraform plan"){
+        //     steps{
+        //         dir('terraform'){
+        //             echo "terraform plan start"
+        //             sh ('/usr/local/bin/terraform plan')
+        //         }
+        //     }
+        // }
     }
 }
