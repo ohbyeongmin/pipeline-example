@@ -9,6 +9,7 @@ import (
 
 func AddNum(a, b int) int {
 	fmt.Println("feature")
+	fmt.Println("feature2")
 	return a + b
 }
 
