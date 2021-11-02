@@ -6,11 +6,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage("action") {
-            steps{
-                echo "${action}"
-            }
-        }
         stage("Test") {
             steps{
                 dir('src'){
