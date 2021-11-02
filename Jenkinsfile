@@ -9,7 +9,7 @@ pipeline {
         stage("terraform init") {
             steps{
                 dir('terraform'){
-                    sh ('terraform init')
+                    sh ('/usr/local/bin/terraform init')
                 }
             }
         }
@@ -17,7 +17,7 @@ pipeline {
             steps{
                 dir('terraform'){
                     echo "terraform plan start"
-                    sh ('terraform plan')
+                    sh ('/usr/local/bin/terraform plan')
                 }
             }
         }
