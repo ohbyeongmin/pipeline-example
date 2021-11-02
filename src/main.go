@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func AddNum(a, b int) int {
+	fmt.Println("feature")
 	return a + b
 }
 
