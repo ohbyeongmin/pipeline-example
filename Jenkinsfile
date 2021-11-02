@@ -20,22 +20,9 @@ pipeline {
                 }
             }
         }
-        stage("staging"){
-            when{
-                expression{
-                    GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-                    return (GIT_BRANCH == 'staging')
-                }
-            }
-            steps{
-                dir('src'){
-                    sh ('pwd')
-                }
-            }
-        }
         stage("test"){
             steps{
-                dir('terraform/${BRANCH_NAME}'){
+                dir("terraform/${BRANCH_NAME}"){
                     sh ('pwd')
                 }
             }
