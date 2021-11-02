@@ -9,6 +9,7 @@ pipeline {
         stage("Test") {
             steps{
                 dir('src'){
+                    echo "${BRANCH_NAME}"
                     sh ('/usr/bin/go test ./... -cover')
                 }
             }
